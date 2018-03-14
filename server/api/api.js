@@ -18,6 +18,7 @@ var userRoutes = {
     put: require('./user/put')
 }
 
+var auth = require('./auth/auth');
 
 
 api.all('/', function(req, res) {
@@ -28,11 +29,12 @@ api.all('/', function(req, res) {
     });
 })
 
-
+// user related 
 api.post('/user', userRoutes.post);
 api.put('/user/:field/:value', userRoutes.put.public, userRoutes.put.private);
 
-
+// auth/token creation
+api.post('/auth', auth);
 
 api.all('*', function(req, res) {
     //res.json(404, "I don't have that");

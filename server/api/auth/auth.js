@@ -24,6 +24,8 @@ module.exports = function(req, res, next) {
                     message: "User does not exist"
                 })
             } else {
+                //console.log(req.body.password)
+                //console.log(doc.password)
                 bcrypt.compare(req.body.password, doc.password, function(err, result) { // Validate password
                     // res == true
                     if (err) {
