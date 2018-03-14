@@ -11,7 +11,7 @@ var bcrypt = require('bcrypt');
 
 
 module.exports = {
-    public: function(req, res) {
+    public: function(req, res, next) {
     // TODO: Make user verifaction 
     if (req.params.field === 'verify') { // Logic for verify
         var ID = req.params.value || "";
@@ -56,7 +56,7 @@ module.exports = {
     }
 
 },
-private: function(req, res) {
+private: function(req, res, next) {
     next();
 }
 

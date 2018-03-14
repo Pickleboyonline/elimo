@@ -26,7 +26,7 @@ var schema = new Schema({
     email: {
         type: String,
         index: {
-            unique: true, 
+            //unique: true, 
         },
         required: true,
     },

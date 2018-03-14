@@ -15,11 +15,14 @@ var bcrypt = require('bcrypt');
 
 var userRoutes = {
     post: require('./user/post'),
-    put: require('./user/put')
+    put: require('./user/put'),
+    delete: require('./user/delete')
 }
 
-var auth = require('./auth/auth');
 
+// Auth related
+var auth = require('./auth/auth');
+var protectedPath = require('./auth/protectedPath');
 
 api.all('/', function(req, res) {
     //res.json(404, "I don't have that");
@@ -31,7 +34,9 @@ api.all('/', function(req, res) {
 
 // user related 
 api.post('/user', userRoutes.post);
-api.put('/user/:field/:value', userRoutes.put.public, userRoutes.put.private);
+api.put('/user/:field/:value', userRoutes.put.public, protectedPath, userRoutes.put.private);
+api.delete('/user', protectedPath, userRoutes.delete);
+
 
 // auth/token creation
 api.post('/auth', auth);
