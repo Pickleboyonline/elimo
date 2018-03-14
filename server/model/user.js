@@ -26,6 +26,9 @@ module.exports = mongoose.model('users', new Schema({
     email: {
         type: String,
         required: true,
+        index: {
+            unique: true
+        }
     },
     createdAt: { 
         type: Date, 

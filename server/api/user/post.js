@@ -26,13 +26,13 @@ module.exports = function(req, res) {
         
         doc.save(function(err, x) { // Save temp user
             if (err) {
-                res.status(500).json({
+                res.status(400).json({
                     success: false,
                     message: err.message
                 })
             } else {
                 // TODO: Add email sending
-                Mailer.sendMail(doc.email);
+                Mailer.sendMail(doc.email, x._id);
                 res.status(202).json({
                     success: true,
                     message: "User was successfully created. However, please verify your account with your email in order to login."

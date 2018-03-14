@@ -14,7 +14,8 @@ var bcrypt = require('bcrypt');
 // Api Routes
 
 var userRoutes = {
-    post: require('./user/post')
+    post: require('./user/post'),
+    put: require('./user/put')
 }
 
 
@@ -29,9 +30,16 @@ api.all('/', function(req, res) {
 
 
 api.post('/user', userRoutes.post);
+api.put('/user/:field/:value', userRoutes.put.public, userRoutes.put.private);
 
 
 
- 
+api.all('*', function(req, res) {
+    //res.json(404, "I don't have that");
+    res.status(404).json({
+        success: false,
+        error: "Not a valid command"
+    });
+})
 
 module.exports = api;
