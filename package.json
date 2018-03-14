@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "express-request-limit": "^1.0.2",
@@ -10,6 +11,7 @@
     "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.10",
     "morgan": "^1.9.0",
+    "nodemailer": "^4.6.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
