@@ -43,11 +43,16 @@ class Image extends Component {
             <div style={{
                 display: 'flex',
     flexDirection: 'column',
+    marginBottom: 20,
+    backgroundColor: 'whitesmoke',
+    padding: 5
             }}>
             <img style={{
                 width: '100%'
             }}src={this.props.src} />
-            <p>{this.props.text}</p>
+            <p style={{
+                margin: '5px 0px 5px 5px'
+            }}>{this.props.text}</p>
                 </div>
         )
     }
@@ -76,7 +81,10 @@ class Limo extends Component {
                 display: 'flex',
                 flexDirection: 'column',
             }}>
-                <Image src={limo0} text="SUV" />
+                <Image src={limo0} text="6-10 Pax Limousine" />
+                <Image src={limo1} text="44-56 Passenger Coach Bus" />
+                <Image src={limo2} text="24-36 Passenger Bus" />
+                <Image src={limo3} text="25 Passenger Limo Bus" />
             </div>
         )
     }
