@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './styles/Home.css';
 import NavBar from './../components/NavBar';
 //import pseudo from 'react-pseudo'
+import limo0 from './../img/cars/limo0.jpg';
+import limo1 from './../img/cars/limo1.gif';
+import limo2 from './../img/cars/limo2.jpg';
+import limo3 from './../img/cars/limo3.jpg';
+import sedan from './../img/cars/sedan.jpg';
+import suv0 from './../img/cars/suv0.jpg';
+import suv1 from './../img/cars/suv1.jpg';
 
 class Button extends Component {
     render() {
@@ -30,14 +37,82 @@ class ButtonFleet extends Component {
     }
 }
 
+class Image extends Component {
+    render() {
+        return (
+            <div style={{
+                display: 'flex',
+    flexDirection: 'column',
+            }}>
+            <img style={{
+                width: '100%'
+            }}src={this.props.src} />
+            <p>{this.props.text}</p>
+                </div>
+        )
+    }
+}
+
+
+class All extends Component {
+    render() {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <Image src={limo0} text="6-10 Pax Limousine" />
+                <Image src={sedan} text="3-4 Passenger Executive Sedan" />
+                <Image src={suv0} text="5-7 Passenger SUV" />
+            </div>
+        )
+    }
+}
+
+class Limo extends Component {
+    render() {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <Image src={limo0} text="SUV" />
+            </div>
+        )
+    }
+}
+
+class Suv extends Component {
+    render() {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <Image src={suv0} text="SUV" />
+            </div>
+        )
+    }
+}
+
+class Sedan extends Component {
+    render() {
+        return (
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}>
+                <Image src={sedan} text="Sedan" />
+            </div>
+        )
+    }
+}
 
 
 class Home extends Component {
     state = {
         fleetPage: 0
     }
-
-
     render() {
         return (
             <div>
@@ -76,7 +151,9 @@ class Home extends Component {
                     }}>{"Our Fleet".toUpperCase()}</h1>
                     <div style={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        marginBottom: 10
+
                     }}>
                     <ButtonFleet mode={
                         !(this.state.fleetPage === 0) ? "button-fleet" : "button-fleet-active"
@@ -110,6 +187,10 @@ class Home extends Component {
                     }}
                     />
                     </div>
+                    {this.state.fleetPage === 0 && <All />}
+                    {this.state.fleetPage === 1 && <Sedan />}
+                    {this.state.fleetPage === 2 && <Suv />}
+                    {this.state.fleetPage === 3 && <Limo />}
                         </div>
             </div>
         );
