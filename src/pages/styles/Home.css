@@ -1,0 +1,33 @@
+.jumbotron {
+    min-height: 600px;
+    background-color: black;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    
+    background-image: url('./../../img/bg-mobile.png')
+}
+/* Mobile first queries */
+
+.jumbotron-cta {
+    display: flex;
+    flex-direction: column;
+    margin-left: 32px;
+}
+
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
