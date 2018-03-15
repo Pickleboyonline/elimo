@@ -23,6 +23,8 @@
     flex-direction: column;
     padding-left: 32px;
     padding-right: 32px;
+    justify-content: center;
+    
 }
 
 .button-fleet-active {
@@ -43,7 +45,38 @@
               cursor: pointer;
   }
   
-  
+  .contact-input-text, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0px;
+    width: 100%;
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    resize: none;
+  }
+
+  input[type=text], input[type=email] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    appearance: none;
+    border-radius: 0px;  
+}
+
+  .fleet {
+    margin-top: 20px;
+    margin-bottom: 48px;
+    align-items: unset;
+  }
+  .contact-input-text:focus, textarea:focus {
+    border: 3px solid #555;
+  }
  /*  
   .button-fleet-active:hover { 
     background-color: unset;
@@ -80,21 +113,70 @@
   color: black
   }
 
+  .jumbotron-cta p {
+    max-width: 250px;
+                            margin-top: 10px;
+                            font-size: '14pt';
+  }
 
+.jumbotron-cta h1 {
+  max-width: 250px;
+}
+.fleet-image-cont {
+  display: flex;
+  flex-direction: column;
+}
 
-
-
-/* Larger than mobile */
-@media (min-width: 400px) {}
-
-/* Larger than phablet */
-@media (min-width: 550px) {}
 
 /* Larger than tablet */
-@media (min-width: 750px) {}
+@media (min-width: 768px) {
+  .jumbotron {
+    background-position: left;
+  }
+  .jumbotron-cta h1 {
+    max-width: 600px;
+    font-size: 44pt
+  }
+  .jumbotron-cta {
+    margin-left: 44px;
+  }
+  .jumbotron-cta p {
+    max-width: 400px;
+    margin-top: 10px;
+    font-size: 14pt;
+  }
+  .about-us p {
+    max-width: 600px;
+  }
+  .about-us  {
+    align-items: center;
+  }
+
+   .fleet-image {
+    width: 300px;
+    
+  }
+
+  .fleet-image-cont {
+    align-items: center;
+  }
+/*
+  .fleet-image:nth-child(even) {
+    background: red;
+}
+.fleet-image-cont {
+  
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+}
 
 /* Larger than desktop */
-@media (min-width: 1000px) {}
+@media (min-width: 1024px) {
+  .jumbotron {
+    
+}
+}
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}

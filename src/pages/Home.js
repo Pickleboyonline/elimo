@@ -17,7 +17,8 @@ class Button extends Component {
             //style={style}
             className="button-standard"
             
-            type="button">{this.props.text.toUpperCase()}</button>
+            type={this.props.type || "button"}
+            >{this.props.text.toUpperCase()}</button>
         );
     }
 }
@@ -30,9 +31,10 @@ class ButtonFleet extends Component {
             //style={style}
             //className="button-fleet-active"
             onClick={this.props.onClick}
-            
+            type={this.props.type || "button"}
             className={this.props.mode}
-            type="button">{this.props.text.toUpperCase()}</button>
+            style={this.props.style}
+           >{this.props.text.toUpperCase()}</button>
         );
     }
 }
@@ -40,6 +42,7 @@ class ButtonFleet extends Component {
 class Image extends Component {
     render() {
         return (
+            <div className="fleet-image">
             <div style={{
                 display: 'flex',
     flexDirection: 'column',
@@ -54,6 +57,7 @@ class Image extends Component {
                 margin: '5px 0px 5px 5px'
             }}>{this.props.text}</p>
                 </div>
+                </div>
         )
     }
 }
@@ -62,10 +66,7 @@ class Image extends Component {
 class All extends Component {
     render() {
         return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-            }}>
+            <div className="fleet-image-cont">
                 <Image src={limo0} text="6-10 Pax Limousine" />
                 <Image src={sedan} text="3-4 Passenger Executive Sedan" />
                 <Image src={suv0} text="5-7 Passenger SUV" />
@@ -77,10 +78,7 @@ class All extends Component {
 class Limo extends Component {
     render() {
         return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-            }}>
+            <div className="fleet-image-cont">
                 <Image src={limo0} text="6-10 Pax Limousine" />
                 <Image src={limo1} text="44-56 Passenger Coach Bus" />
                 <Image src={limo2} text="24-36 Passenger Bus" />
@@ -93,10 +91,7 @@ class Limo extends Component {
 class Suv extends Component {
     render() {
         return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-            }}>
+            <div className="fleet-image-cont">
                 <Image src={suv0} text="SUV" />
             </div>
         )
@@ -106,15 +101,90 @@ class Suv extends Component {
 class Sedan extends Component {
     render() {
         return (
-            <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-            }}>
+            <div className="fleet-image-cont">
                 <Image src={sedan} text="Sedan" />
             </div>
         )
     }
 }
+
+
+class Form extends Component {
+    state ={
+        name: "",
+        email: "",
+        message: "",
+    }
+
+    handleChange = name => event => {
+        this.setState({
+          [name]: event.target.value,
+        });
+      };
+    
+      handleSubmit = (event) => {
+        alert('A name was submitted: ' + this.state.name);
+        event.preventDefault();
+      }
+
+    render() {
+        return (
+            <div style={{
+                backgroundColor: 'white',
+                marginTop: 28,
+                marginBottom: 28,
+                minHeight: 300,
+                display: 'flex',
+                flexDirection: 'column',
+                padding: 16
+
+            }}>
+            <form  style={{
+                display: 'flex',
+                flexDirection: 'column',
+            }}onSubmit={this.handleSubmit}>
+        
+          
+          
+          <input type="text" 
+          placeholder="Name"
+          className="contact-input-text"
+          value={this.state.name} 
+          onChange={this.handleChange('name')} />
+          <input type="email" 
+          required
+          placeholder="Email"
+          className="contact-input-text"
+          value={this.state.email} 
+          onChange={this.handleChange('email')} />
+<textarea style={{
+    height: 150
+}}
+placeholder="Message"
+value={this.state.message} 
+          onChange={this.handleChange('message')}
+></textarea>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'flex-end'
+        }}>
+        <ButtonFleet 
+        onClick={this.handleSubmit} 
+        text="submit" 
+        type="Submit" 
+        style={{
+            margin: 0
+        }}
+        mode="button-fleet-active" 
+        />
+        </div>
+        
+      </form>
+            </div>
+        )
+    }
+}
+
 
 
 class Home extends Component {
@@ -128,13 +198,13 @@ class Home extends Component {
                     <NavBar />
                     <div className="jumbotron-cta">
                         <h1 style={{
-                            maxWidth: 250
+                            //maxWidth: 250
                         }}>A complete line of Limousine 
                             Service for all occasions</h1>
                         <p style={{
-                            maxWidth: 250,
-                            marginTop: 10,
-                            fontSize: '14pt'
+                            //maxWidth: 250,
+                            //marginTop: 10,
+                            //fontSize: '14pt'
                         }}>At eLimo, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
                         <div>
                         <Button text="Reserve now" />
@@ -156,6 +226,7 @@ class Home extends Component {
                     <h1 style={{
                         textAlign: 'center',
                         fontSize: 35
+                        
                     }}>{"Our Fleet".toUpperCase()}</h1>
                     <div style={{
                         display: 'flex',
@@ -199,6 +270,17 @@ class Home extends Component {
                     {this.state.fleetPage === 1 && <Sedan />}
                     {this.state.fleetPage === 2 && <Suv />}
                     {this.state.fleetPage === 3 && <Limo />}
+                        </div>
+
+                        <div className="standard-section" style={{
+                            backgroundColor: 'black'
+                        }}>
+                        <h1 style={{
+                            color: 'white',
+                            textAlign: 'center',
+                            fontSize: '4.5em',
+                        }}>Contact Us</h1>
+                        <Form />
                         </div>
             </div>
         );

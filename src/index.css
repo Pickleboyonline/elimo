@@ -18,13 +18,17 @@ h1 {
   font-family: 'Dense-Regular', sans-serif;
   font-weight: 500;
   font-size: 32pt;
-  margin-bottom: 0px;
+   margin-bottom: 0px; 
   font-style: inherit;
 }
 p {
   font-family: 'EB Garamond', serif;
 }
 
+input, textarea {
+  font-family: 'EB Garamond', serif;
+  font-size: 12pt;
+}
 .button-standard {
   background-color: white;
             border: none;
