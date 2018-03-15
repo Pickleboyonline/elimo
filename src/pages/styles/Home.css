@@ -4,7 +4,7 @@
     color: white;
     background-size: cover;
     background-position: center;
-    
+    background-position-y: 25px;
     background-image: url('./../../img/bg-mobile.png')
 }
 /* Mobile first queries */
@@ -14,6 +14,75 @@
     flex-direction: column;
     margin-left: 32px;
 }
+
+.about-us {
+    
+}
+
+.standard-section {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.button-fleet-active {
+    background-color: black;
+              border: none;
+              padding: 5px 15px;
+              margin: 10px;
+              
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 20px;
+              color: white;
+    font-family: 'Dense-Regular', sans-serif;
+    border: 2px solid black;
+              transition-duration: 0.4s;
+              outline: none;
+              cursor: pointer;
+  }
+  
+  
+ /*  
+  .button-fleet-active:hover { 
+    background-color: unset;
+    border: 2px solid black;
+    background-color: unset;
+  color: black
+  } */
+  
+
+  .button-fleet {
+    background-color: unset;
+              border: none;
+              padding: 5px 15px;
+              margin: 10px;
+              
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 20px;
+              color: black;
+    font-family: 'Dense-Regular', sans-serif;
+    border: 2px solid black;
+              transition-duration: 0.4s;
+              outline: none;
+              cursor: pointer;
+  }
+  
+  
+  
+  .button-fleet:hover { 
+    background-color: unset;
+    border: 2px solid black;
+    background-color: unset;
+  color: black
+  }
+
+
 
 
 

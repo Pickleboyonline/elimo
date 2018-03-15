@@ -25,6 +25,31 @@ p {
   font-family: 'EB Garamond', serif;
 }
 
+.button-standard {
+  background-color: white;
+            border: none;
+            padding: 12px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+  font-family: 'Dense-Regular', sans-serif;
+  border: 2px solid white;
+            transition-duration: 0.4s;
+            outline: none;
+            cursor: pointer;
+}
+
+
+
+.button-standard:hover { 
+  background-color: unset;
+  border: 2px solid white;
+color: white
+}
+
+
+
 /* Mobile first queries */
 
 /* Larger than mobile */
