@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import './styles/NavBar.css';
-import logo from './../img/logo-dark.svg';
-
+import logoLight from './../img/logo-dark.svg';
+import logoDark from './../img/logo-light.svg';
+import {  Link } from "react-router-dom"
 class NavBar extends Component {
     render() {
         return (
             <div className="navbar">
-            <img src={logo} className="navbar-logo" />
+            <Link to="/">
+            <img src={!(this.props.mode === "light") ? logoLight : logoDark} 
+            className="navbar-logo" />
+            </Link>
             </div>
         )
     }

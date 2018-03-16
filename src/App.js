@@ -3,18 +3,19 @@ import logo from './logo.svg';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 //import './App.css';
 import Home from './pages/Home';
-
-class Footer extends Component {
+import Login from './pages/Login';
+export class Footer extends Component {
   render() {
+    const style = this.props.style || {}
     return (
-      <div style={{
+      <div style={Object.assign({
         minHeight: 100,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'black',
         color: 'white'
-      }}>
+      }, style)}>
       <p>© Empress Transportation service, Inc.</p>
       </div>
     );
@@ -30,8 +31,8 @@ class App extends Component {
     <div>
 
       <Route exact path="/" component={Home} />
-      
-    <Footer />
+      <Route  path="/login" component={Login} />
+    
     </div>
   </Router>
       </div>

@@ -11,11 +11,17 @@ import suv0 from './../img/cars/suv0.jpg';
 import suv1 from './../img/cars/suv1.jpg';
 import StackGrid from "react-stack-grid";
 import axios from 'axios';
+import {Footer} from './../App';
+import {
+    withRouter
+  } from 'react-router-dom'
+
+
 var mobile = require('is-mobile');
 
 
 
-class ButtonFleet extends Component {
+ export class ButtonFleet extends Component {
     render() {
         return (
             <button 
@@ -254,7 +260,9 @@ class Home extends Component {
                             //fontSize: '14pt'
                         }}>At eLimo, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
                         <div>
-                        <ButtonFleet text="Reserve now" />
+                        <ButtonFleet text="Reserve now" onClick={(e)=> {
+                            this.props.history.push('/login')
+                        }}/>
                         </div>
                     </div>
                 </div> 
@@ -270,11 +278,11 @@ class Home extends Component {
 
                     </div>
                     <div className="fleet "
-                    style={ !mobile() ? {
-                        height: 700
+                    /* style={ !mobile() ? {
+                        height: 850
                     } : {
                         height: 'unset'
-                    }}
+                    }} */
                     >
                     <h1 style={{
                         textAlign: 'center',
@@ -337,9 +345,10 @@ class Home extends Component {
                         }}>Contact Us</h1>
                         <Form />
                         </div>
+                        <Footer />
             </div>
         );
     }
 }
 
-export default Home;
+export default withRouter(Home) ;

@@ -40,7 +40,7 @@ input, textarea {
             display: inline-block;
             font-size: 20px;
   font-family: 'Dense-Regular', sans-serif;
-  border: 2px solid white;
+  border: 3px solid white;
             transition-duration: 0.4s;
             outline: none;
             cursor: pointer;
@@ -50,7 +50,7 @@ input, textarea {
 
 .button-standard:hover { 
   background-color: unset;
-  border: 2px solid white;
+  border: 3px solid white;
 color: white
 }
 
