@@ -9,19 +9,9 @@ import limo3 from './../img/cars/limo3.jpg';
 import sedan from './../img/cars/sedan.jpg';
 import suv0 from './../img/cars/suv0.jpg';
 import suv1 from './../img/cars/suv1.jpg';
+import StackGrid from "react-stack-grid";
+var mobile = require('is-mobile');
 
-class Button extends Component {
-    render() {
-        return (
-            <button 
-            //style={style}
-            className="button-standard"
-            
-            type={this.props.type || "button"}
-            >{this.props.text.toUpperCase()}</button>
-        );
-    }
-}
 
 
 class ButtonFleet extends Component {
@@ -32,7 +22,7 @@ class ButtonFleet extends Component {
             //className="button-fleet-active"
             onClick={this.props.onClick}
             type={this.props.type || "button"}
-            className={this.props.mode}
+            className={this.props.mode || "button-standard"}
             style={this.props.style}
            >{this.props.text.toUpperCase()}</button>
         );
@@ -47,15 +37,23 @@ class Image extends Component {
                 display: 'flex',
     flexDirection: 'column',
     marginBottom: 20,
-    backgroundColor: 'whitesmoke',
+    alignItems: 'center',
+    //backgroundColor: 'whitesmoke',
     padding: 5
             }}>
-            <img style={{
-                width: '100%'
-            }}src={this.props.src} />
-            <p style={{
-                margin: '5px 0px 5px 5px'
-            }}>{this.props.text}</p>
+            <div style={{
+                width: '100%',
+                height: 200,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundImage: `url('` + this.props.src + `')`
+            }} />
+            <h1 style={{
+                margin: '5px 0px 5px 5px',
+               
+                fontSize: '16pt'
+            }}>{this.props.text}</h1>
                 </div>
                 </div>
         )
@@ -67,9 +65,16 @@ class All extends Component {
     render() {
         return (
             <div className="fleet-image-cont">
+            <StackGrid
+        columnWidth={300}
+      >
                 <Image src={limo0} text="6-10 Pax Limousine" />
                 <Image src={sedan} text="3-4 Passenger Executive Sedan" />
                 <Image src={suv0} text="5-7 Passenger SUV" />
+                <Image src={limo1} text="44-56 Passenger Coach Bus" />
+                <Image src={limo2} text="24-36 Passenger Bus" />
+        <Image src={limo3} text="25 Passenger Limo Bus" />
+                </StackGrid >
             </div>
         )
     }
@@ -78,21 +83,38 @@ class All extends Component {
 class Limo extends Component {
     render() {
         return (
-            <div className="fleet-image-cont">
-                <Image src={limo0} text="6-10 Pax Limousine" />
+            
+                
+
+ <StackGrid
+        columnWidth={300}
+      >
+        <Image src={limo0} text="6-10 Pax Limousine" />
                 <Image src={limo1} text="44-56 Passenger Coach Bus" />
                 <Image src={limo2} text="24-36 Passenger Bus" />
-                <Image src={limo3} text="25 Passenger Limo Bus" />
-            </div>
+        <Image src={limo3} text="25 Passenger Limo Bus" />
+      </StackGrid>
+
+
+            
         )
     }
 }
 
+
+{/*<Image src={limo0} text="6-10 Pax Limousine" />
+                <Image src={limo1} text="44-56 Passenger Coach Bus" />
+                <Image src={limo2} text="24-36 Passenger Bus" />
+        <Image src={limo3} text="25 Passenger Limo Bus" />*/}
 class Suv extends Component {
     render() {
         return (
             <div className="fleet-image-cont">
-                <Image src={suv0} text="SUV" />
+            <StackGrid
+        columnWidth={300}
+      >
+                <Image src={suv0} text="5-7 Passenger SUV" />
+                </StackGrid>
             </div>
         )
     }
@@ -102,7 +124,11 @@ class Sedan extends Component {
     render() {
         return (
             <div className="fleet-image-cont">
-                <Image src={sedan} text="Sedan" />
+            <StackGrid
+        columnWidth={300}
+      >
+                <Image src={sedan} text="3-4 Passenger Executive Sedan" />
+                </StackGrid>
             </div>
         )
     }
@@ -130,14 +156,14 @@ class Form extends Component {
     render() {
         return (
             <div style={{
-                backgroundColor: 'white',
+                //backgroundColor: 'white',
                 marginTop: 28,
                 marginBottom: 28,
                 minHeight: 300,
                 display: 'flex',
                 flexDirection: 'column',
-                padding: 16
-
+                padding: 16,
+                //maxWidth: 500
             }}>
             <form  style={{
                 display: 'flex',
@@ -173,9 +199,11 @@ value={this.state.message}
         text="submit" 
         type="Submit" 
         style={{
-            margin: 0
+            margin: 0,
+            fontSize: '1.3rem'
         }}
-        mode="button-fleet-active" 
+        mode="button-fleet"
+        //mode="button-fleet-active" 
         />
         </div>
         
@@ -207,13 +235,13 @@ class Home extends Component {
                             //fontSize: '14pt'
                         }}>At eLimo, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
                         <div>
-                        <Button text="Reserve now" />
+                        <ButtonFleet text="Reserve now" />
                         </div>
                     </div>
                 </div> 
                     <div className="about-us standard-section">
                         <h1 style={{
-                            fontSize: '4.5em',
+                            //fontSize: '4.5em',
                             textAlign: 'center'
                         }}>Safe, Reliable, and Luxurious</h1>
                         <p style={{
@@ -222,10 +250,16 @@ class Home extends Component {
 </p>
 
                     </div>
-                    <div className="fleet standard-section">
+                    <div className="fleet "
+                    style={ !mobile() ? {
+                        height: 700
+                    } : {
+                        height: 'unset'
+                    }}
+                    >
                     <h1 style={{
                         textAlign: 'center',
-                        fontSize: 35
+                        fontSize: 60
                         
                     }}>{"Our Fleet".toUpperCase()}</h1>
                     <div style={{
@@ -273,10 +307,12 @@ class Home extends Component {
                         </div>
 
                         <div className="standard-section" style={{
-                            backgroundColor: 'black'
+                            //backgroundColor: 'black',
+                            alignItems: 'center',
+                            marginBottom: 100
                         }}>
                         <h1 style={{
-                            color: 'white',
+                            //color: 'white',
                             textAlign: 'center',
                             fontSize: '4.5em',
                         }}>Contact Us</h1>
