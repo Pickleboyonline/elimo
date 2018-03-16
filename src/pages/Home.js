@@ -10,6 +10,7 @@ import sedan from './../img/cars/sedan.jpg';
 import suv0 from './../img/cars/suv0.jpg';
 import suv1 from './../img/cars/suv1.jpg';
 import StackGrid from "react-stack-grid";
+import axios from 'axios';
 var mobile = require('is-mobile');
 
 
@@ -147,9 +148,27 @@ class Form extends Component {
           [name]: event.target.value,
         });
       };
+
+      checkForm = () => {
+        // TODO: add from validation
+        this.sendForm()
+      }
+
+      sendForm = () => {
+        axios.post("http://192.168.1.74/api/contact", {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
+        }).then((result) => {
+            console.log(result.data)
+        }).catch((err) => {
+            console.log(err.response.data)
+        })
+      }
     
       handleSubmit = (event) => {
-        alert('A name was submitted: ' + this.state.name);
+        //alert('A name was submitted: ' + this.state.name);
+        this.checkForm();
         event.preventDefault();
       }
 

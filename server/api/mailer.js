@@ -1,8 +1,11 @@
 const nodemailer = require('nodemailer');
 
+// TODO: Add async cb for errors
+
+
 // Generate test SMTP service account from ethereal.email
 // Only needed if you don't have a real mail account for testing
-function sendMail(email, id) {
+function sendMail(reciever, message, subject) {
 nodemailer.createTestAccount((err, account) => {
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
@@ -13,15 +16,15 @@ nodemailer.createTestAccount((err, account) => {
             pass: 'N72zkCBPeDkNMg6rds'
         }
     });
-    let link = "http://localhost:80/api/user/verify/" + id;
+    //let link = "http://localhost:80/api/user/verify/" + id;
 
     // setup email data with unicode symbols
     let mailOptions = {
         from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: email, // list of receivers
-        subject: 'Email verification ✔', // Subject line
+        to: reciever, // list of receivers
+        subject: subject, // Subject line
         //text: 'Hi there', // plain text body
-        html: `<p>Hello, please verify your account at <a href="${link}">${link}</a></p>` // html body
+        html: message // html body
     };
 
     // send mail with defined transport object
