@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
  import {ButtonFleet} from './Home'
 import {Footer} from './../App';
 import Modal from './../components/Modal'
+import isEmail from 'validator/lib/isEmail';
 
  class Form extends Component {
     state ={
@@ -12,36 +13,100 @@ import Modal from './../components/Modal'
         email: "",
         nameFirst: "",
         nameLast: "",
+        submit: false,
         open: false,
-        error: {
-            nameFirst: true,
-            nameLast: true,
-            email: true,
-            password: true
-        }
+        modalMessage: "",
+        modalHeading: "",
+            errorNameFirst: false,
+            errorNameLast: false,
+            errorEmail: false,
+            errorPassword: false
+        
         //message: "",
     }
  
-    handleChange = name => event => {
+    handleChange = (name, errorName) => event => {
         this.setState({
           [name]: event.target.value,
+          [errorName]: false
         });
-      };
+      }
+
+
 
       checkForm = () => {
         // TODO: add from validation
-        this.sendForm()
+        var sendForm = true;
+       
+        if (!isEmail(this.state.email)) {
+            this.setState({
+                errorEmail: true
+            })
+            sendForm = false;
+        }
+        if (!this.state.nameFirst) {
+            this.setState({
+                errorNameFirst: true
+            })
+            sendForm = false;
+        }
+        if (!(this.state.nameLast)) {
+            this.setState({
+                errorNameLast: true
+            })
+            sendForm = false;
+        }
+        if (!(this.state.password)) {
+            this.setState({
+                errorPassword: true
+            })
+            sendForm = false;
+        }
+        
+        if (sendForm === true) {
+            this.sendForm();
+            //this.setState({
+            //    open: true
+            //})
+        }
+        //isEmail(this.state.email)
+        
+        //this.sendForm()
       }
 
       sendForm = () => {
-        axios.post("http://192.168.1.74/api/auth", {
+          var self = this;
+        axios.post("http://192.168.1.74/api/user", {
             email: this.state.email,
             password: this.state.password,
+            nameLast: this.state.nameLast,
+            nameFirst: this.state.nameFirst
             //message: this.state.message
         }).then((result) => {
             console.log(result.data)
+            self.setState({
+                open: true,
+                modalHeading: "Success",
+                modalMessage: result.data.message
+            })
+
         }).catch((err) => {
             console.log(err.response)
+            if (err.response) {
+                self.setState({
+                    open: true,
+                    modalHeading: "Failed",
+                    modalMessage: err.response.data.error
+                })
+            } else {
+                self.setState({
+                    open: true,
+                    modalHeading: "Failed",
+                    modalMessage: err.message
+                })
+            }
+
+            
         })
       }
     
@@ -53,19 +118,21 @@ import Modal from './../components/Modal'
 
     render() {
         const error = {
-            nameFirst: (this.state.error.nameFirst) ? {
+            nameFirst: (this.state.errorNameFirst) ? {
                 borderColor: 'red'
             } : {},
-            email: (this.state.error.email) ? {
+            email: (this.state.errorEmail) ? {
                 borderColor: 'red'
             } : {},
-            password: (this.state.error.password) ? {
+            password: (this.state.errorPassword) ? {
                 borderColor: 'red'
             } : {},
-            nameLast: (this.state.error.nameLast) ? {
+            nameLast: (this.state.errorNameLast) ? {
                 borderColor: 'red'
             } : {},
         }
+
+        //if (this.)
 
 
 
@@ -83,8 +150,8 @@ import Modal from './../components/Modal'
  
             <Modal 
             open={this.state.open}
-            heading="Success"
-            body="Please go verify your account with the link sent to your email."
+            heading={this.state.modalHeading}
+            body={this.state.modalMessage}
             buttonText="ok"
             onClick={(e)=> {
                 this.setState({
@@ -106,7 +173,7 @@ import Modal from './../components/Modal'
           className="contact-input-text"
           style={error.email}
           value={this.state.email} 
-          onChange={this.handleChange('email')} />
+          onChange={this.handleChange('email', 'errorEmail')} />
 
 <input type="password" 
           required
@@ -114,7 +181,7 @@ import Modal from './../components/Modal'
           className="contact-input-text"
           style={error.password}
           value={this.state.password} 
-          onChange={this.handleChange('password')} />
+          onChange={this.handleChange('password', 'errorPassword')} />
 
           <input type="text" 
           required
@@ -122,7 +189,7 @@ import Modal from './../components/Modal'
           style={error.nameFirst}
           className="contact-input-text"
           value={this.state.nameFirst} 
-          onChange={this.handleChange('nameFirst')} />
+          onChange={this.handleChange('nameFirst', 'errorNameFirst')} />
 
           <input type="text" 
           required
@@ -130,7 +197,7 @@ import Modal from './../components/Modal'
           style={error.nameLast}
           className="contact-input-text"
           value={this.state.nameLast} 
-          onChange={this.handleChange('nameLast')} />
+          onChange={this.handleChange('nameLast', 'errorNameLast')} />
 
 
 
@@ -156,6 +223,7 @@ import Modal from './../components/Modal'
         )
     }
 }
+
 
 
 class Login extends Component {
