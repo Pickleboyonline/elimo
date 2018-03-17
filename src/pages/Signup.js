@@ -4,14 +4,24 @@ import NavBar from "../components/NavBar";
  import axios from 'axios';
  import {ButtonFleet} from './Home'
 import {Footer} from './../App';
+import Modal from './../components/Modal'
 
  class Form extends Component {
     state ={
         password: "",
         email: "",
+        nameFirst: "",
+        nameLast: "",
+        open: false,
+        error: {
+            nameFirst: true,
+            nameLast: true,
+            email: true,
+            password: true
+        }
         //message: "",
     }
-
+ 
     handleChange = name => event => {
         this.setState({
           [name]: event.target.value,
@@ -42,6 +52,23 @@ import {Footer} from './../App';
       }
 
     render() {
+        const error = {
+            nameFirst: (this.state.error.nameFirst) ? {
+                borderColor: 'red'
+            } : {},
+            email: (this.state.error.email) ? {
+                borderColor: 'red'
+            } : {},
+            password: (this.state.error.password) ? {
+                borderColor: 'red'
+            } : {},
+            nameLast: (this.state.error.nameLast) ? {
+                borderColor: 'red'
+            } : {},
+        }
+
+
+
         return (
             <div style={{
                 //backgroundColor: 'white',
@@ -53,6 +80,18 @@ import {Footer} from './../App';
                 padding: 16,
                 //maxWidth: 500
             }}>
+ 
+            <Modal 
+            open={this.state.open}
+            heading="Success"
+            body="Please go verify your account with the link sent to your email."
+            buttonText="ok"
+            onClick={(e)=> {
+                this.setState({
+                    open: !this.state.open
+                });
+            }}
+            />
             <form  style={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -65,14 +104,33 @@ import {Footer} from './../App';
           required
           placeholder="Email"
           className="contact-input-text"
+          style={error.email}
           value={this.state.email} 
           onChange={this.handleChange('email')} />
+
 <input type="password" 
           required
           placeholder="Password"
           className="contact-input-text"
+          style={error.password}
           value={this.state.password} 
           onChange={this.handleChange('password')} />
+
+          <input type="text" 
+          required
+          placeholder="First Name"
+          style={error.nameFirst}
+          className="contact-input-text"
+          value={this.state.nameFirst} 
+          onChange={this.handleChange('nameFirst')} />
+
+          <input type="text" 
+          required
+          placeholder="Last Name"
+          style={error.nameLast}
+          className="contact-input-text"
+          value={this.state.nameLast} 
+          onChange={this.handleChange('nameLast')} />
 
 
 
@@ -106,14 +164,14 @@ class Login extends Component {
         <div>
         <NavBar mode="light"/>
         <div className="Login-App"> 
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
         <Form />
         </div>
         <Footer style={{
-            position: 'absolute',
-            width: '100%',
-            bottom: 0,
-            left: 0
+            //position: 'absolute',
+            //width: '100%',
+            //bottom: 0,
+            //left: 0
         }}/>
         </div>
         )

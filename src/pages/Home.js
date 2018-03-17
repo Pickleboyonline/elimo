@@ -261,7 +261,7 @@ class Home extends Component {
                         }}>At eLimo, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
                         <div>
                         <ButtonFleet text="Reserve now" onClick={(e)=> {
-                            this.props.history.push('/login')
+                            this.props.history.push('/signup')
                         }}/>
                         </div>
                     </div>
