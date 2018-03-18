@@ -255,10 +255,10 @@ class Home extends Component {
                         }}>A complete line of Limousine 
                             Service for all occasions</h1>
                         <p style={{
-                            //maxWidth: 250,
-                            //marginTop: 10,
-                            //fontSize: '14pt'
-                        }}>At eLimo, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
+                            maxWidth: 250,
+                            marginTop: 10,
+                            fontSize: '14pt'
+                        }}>At Empress Transportation Service Inc, we strive to be the very best Limousine and Transportation service in Houston and the Greater Houston Metro Area. </p>
                         <div>
                         <ButtonFleet text="Reserve now" onClick={(e)=> {
                             this.props.history.push('/signup')
@@ -273,7 +273,7 @@ class Home extends Component {
                         }}>Safe, Reliable, and Luxurious</h1>
                         <p style={{
                         textAlign: 'center'
-                    }}>We are dedicated to developing and maintaining long term relationships with our clients. Our chauffeurs are well trained, screened and experienced and knowledge able of the city and professional. Our Vehicles are clean, well maintained, fully licensed and insured as required by law. Empress Transportation Service, Inc. continues to make every effort and whatever it takes to keep our clients happy.
+                    }}>We are dedicated to developing and maintaining long term relationships with our clients. Our chauffeurs are well trained perfessionals that are experienced and familiar with the city. Our Vehicles are well maintained, fully licensed, and insured as required by law. Here at Empress we take every precaution to ensure the satisfaction of our customers.
 </p>
 
                     </div>
