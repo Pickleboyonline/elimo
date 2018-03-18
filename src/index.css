@@ -18,13 +18,19 @@ h1 {
   font-family: 'Dense-Regular', sans-serif;
   font-weight: 500;
   font-size: 32pt;
-  margin-bottom: 0px;
+   margin-bottom: 0px; 
   font-style: inherit;
 }
 p {
   font-family: 'EB Garamond', serif;
+  
 }
 
+input, textarea {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  color: black;
+}
 .button-standard {
   background-color: white;
             border: none;
@@ -34,7 +40,7 @@ p {
             display: inline-block;
             font-size: 20px;
   font-family: 'Dense-Regular', sans-serif;
-  border: 2px solid white;
+  border: 3px solid white;
             transition-duration: 0.4s;
             outline: none;
             cursor: pointer;
@@ -44,7 +50,7 @@ p {
 
 .button-standard:hover { 
   background-color: unset;
-  border: 2px solid white;
+  border: 3px solid white;
 color: white
 }
 

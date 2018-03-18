@@ -19,6 +19,10 @@ var userRoutes = {
     delete: require('./user/delete')
 }
 
+var contactRoutes = {
+    post: require('./contact/post')
+}
+
 
 // Auth related
 var auth = require('./auth/auth');
@@ -37,6 +41,8 @@ api.post('/user', userRoutes.post);
 api.put('/user/:field/:value', userRoutes.put.public, protectedPath, userRoutes.put.private);
 api.delete('/user', protectedPath, userRoutes.delete);
 
+// contact related
+api.post('/contact', contactRoutes.post);
 
 // auth/token creation
 api.post('/auth', auth);
