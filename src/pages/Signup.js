@@ -76,6 +76,7 @@ import isEmail from 'validator/lib/isEmail';
 
       sendForm = () => {
           var self = this;
+
         axios.post("http://192.168.1.74/api/user", {
             email: this.state.email,
             password: this.state.password,
@@ -233,6 +234,7 @@ class Login extends Component {
         <NavBar mode="light"/>
         <div className="Login-App"> 
         <h1>Sign Up</h1>
+        <p>You need an account in order to make a reservation</p>
         <Form />
         </div>
         <Footer style={{
