@@ -17,10 +17,10 @@ import isEmail from 'validator/lib/isEmail';
         open: false,
         modalMessage: "",
         modalHeading: "",
-            errorNameFirst: false,
-            errorNameLast: false,
-            errorEmail: false,
-            errorPassword: false
+        errorNameFirst: false,
+        errorNameLast: false,
+        errorEmail: false,
+        errorPassword: false
         
         //message: "",
     }
@@ -166,7 +166,22 @@ import isEmail from 'validator/lib/isEmail';
             }}onSubmit={this.handleSubmit}>
         
           
-          
+
+          <input type="text" 
+          required
+          placeholder="First Name"
+          style={error.nameFirst}
+          className="contact-input-text"
+          value={this.state.nameFirst} 
+          onChange={this.handleChange('nameFirst', 'errorNameFirst')} />
+
+          <input type="text" 
+          required
+          placeholder="Last Name"
+          style={error.nameLast}
+          className="contact-input-text"
+          value={this.state.nameLast} 
+          onChange={this.handleChange('nameLast', 'errorNameLast')} />          
           
           <input type="email" 
           required
@@ -184,21 +199,6 @@ import isEmail from 'validator/lib/isEmail';
           value={this.state.password} 
           onChange={this.handleChange('password', 'errorPassword')} />
 
-          <input type="text" 
-          required
-          placeholder="First Name"
-          style={error.nameFirst}
-          className="contact-input-text"
-          value={this.state.nameFirst} 
-          onChange={this.handleChange('nameFirst', 'errorNameFirst')} />
-
-          <input type="text" 
-          required
-          placeholder="Last Name"
-          style={error.nameLast}
-          className="contact-input-text"
-          value={this.state.nameLast} 
-          onChange={this.handleChange('nameLast', 'errorNameLast')} />
 
 
 

@@ -2,13 +2,18 @@ import  React, { Component } from "react";
 import NavBar from "../components/NavBar";
  import './styles/Login.css';
  import axios from 'axios';
- import {ButtonFleet} from './Home'
+ import {ButtonFleet} from './Home';
+ import Modal from './../components/Modal';
 import {Footer} from './../App';
+
 class Form extends Component {
     state ={
         name: "",
         email: "",
         message: "",
+        open: false,
+        modalMessage: " ",
+        modalHeading: " ",
     }
 
     handleChange = name => event => {
@@ -23,14 +28,34 @@ class Form extends Component {
       }
 
       sendForm = () => {
+          var self = this;
         axios.post("http://192.168.1.74/api/contact", {
             name: this.state.name,
             email: this.state.email,
             message: this.state.message
         }).then((result) => {
             console.log(result.data)
+            self.setState({
+                open: true,
+                modalHeading: "Success",
+                modalMessage: result.data.message
+            })
         }).catch((err) => {
-            console.log(err.response.data)
+            //console.log(err.response.data)
+            if (err.response) {
+                self.setState({
+                    open: true,
+                    modalHeading: "Failed",
+                    modalMessage: err.response.data.message
+                })
+            } else {
+                self.setState({
+                    open: true,
+                    modalHeading: "Failed",
+                    modalMessage: err.message
+                })
+            }
+
         })
       }
     
@@ -81,6 +106,16 @@ value={this.state.message}
             display: 'flex',
             justifyContent: 'flex-end'
         }}>
+         <Modal 
+            open={false}
+            heading={this.state.modalHeading}
+            body={this.state.modalMessage}
+            onClick={(e)=>{
+                this.setState({
+                    open: false
+                })
+            }}
+            />
         <ButtonFleet 
         onClick={this.handleSubmit} 
         text="submit" 
@@ -104,14 +139,13 @@ class Login extends Component {
     render() {
         return (
         <div>
+           
         <NavBar mode="light"/>
         <div className="Login-App"> 
         <h1>Contact Us</h1>
         <Form />
         </div>
-        <Footer style={{
-            
-        }}/>
+        <Footer />
         </div>
         )
         
