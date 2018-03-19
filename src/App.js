@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-
+import Verify from './pages/Verify';
+import Contact from './pages/Contact';
 
 export class Footer extends Component {
   render() {
@@ -34,7 +35,9 @@ class App extends Component {
     <div>
 
       <Route exact path="/" component={Home} />
+      <Route  path="/contact" component={Contact} />
       <Route  path="/login" component={Login} />
+      <Route  path="/verify/:id" component={Verify} />
     <Route path="/signup" component={Signup} />
     </div>
   </Router>

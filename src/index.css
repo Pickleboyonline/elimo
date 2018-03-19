@@ -25,6 +25,14 @@ p {
   font-family: 'EB Garamond', serif;
   
 }
+h2 {
+  /*font-family: 'Oswald', sans-serif; */
+  font-family: 'Dense-Regular', sans-serif;
+  font-weight: 500;
+  font-size: 32pt;
+   margin-bottom: 0px; 
+  font-style: inherit;
+}
 
 input, textarea {
   font-family: 'EB Garamond', serif;

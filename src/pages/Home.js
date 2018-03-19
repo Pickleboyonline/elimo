@@ -14,7 +14,8 @@ import axios from 'axios';
 import {Footer} from './../App';
 import {
     withRouter
-  } from 'react-router-dom'
+  } from 'react-router-dom';
+  import Contact from './Contact';
 
 
 var mobile = require('is-mobile');
@@ -333,17 +334,61 @@ class Home extends Component {
                     {this.state.fleetPage === 3 && <Limo />}
                         </div>
 
-                        <div className="standard-section" style={{
+                        <div className="contact-us standard-section" style={{
                             //backgroundColor: 'black',
-                            alignItems: 'center',
-                            marginBottom: 100
+                            //alignItems: 'center',
+                            
+                            marginTop: 60,
+                        
+                            marginBottom: 60
                         }}>
+                        <div>
+                        <h2 style={{
+                            //color: 'white',
+                            //textAlign: 'center',
+                            //fontSize: '4.5em',
+                            fontWeight: 'lighter',
+                            //backgroundColor: 'black',
+                            color: 'rgba(0, 0, 0, 0.49)',
+                            //paddingLeft: 5,
+                            //paddingRight: 5
+                        }}>Ready to make a reservation?</h2>
                         <h1 style={{
                             //color: 'white',
-                            textAlign: 'center',
-                            fontSize: '4.5em',
-                        }}>Contact Us</h1>
-                        <Form />
+                            //textAlign: 'center',
+                            //fontSize: '4.5em',
+                            marginTop: 0,
+                            fontSize: '40pt',
+                        }}>Make an account today, or get just in touch.</h1>
+                        </div>
+                        <div style={{
+                            marginTop: 55,
+                            flex: 1
+                        }}>
+                        <ButtonFleet mode={
+                        "button-fleet contact-button" // "button-fleet-active"
+                    }text="Contact Us" 
+                    style={{
+                        float: 'right'
+                    }}
+                    onClick={(e) => {
+                       //this.setState({fleetPage: 0});
+                       this.props.history.push('/contact')
+                    }}
+                    />
+                        <ButtonFleet mode={
+                        "button-fleet-active contact-button" // "button-fleet-active"
+                    }text="Sign up" 
+                    style={{
+                        float: 'right'
+                    }}
+                    onClick={(e) => {
+                       //this.setState({fleetPage: 0});
+                       this.props.history.push('/signup')
+                    }}
+                    />
+                    
+                        </div>
                         </div>
                         <Footer />
             </div>

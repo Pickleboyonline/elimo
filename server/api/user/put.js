@@ -4,11 +4,11 @@ var User = require('./../../model/user');
 
 // Mail transporter
 var Mailer = require('./../mailer');
-
+var jwt = require('jsonwebtoken');
 // Password encrypter
 var bcrypt = require('bcrypt');
 
-
+var secret = require('./../auth/config').secret;
 
 module.exports = {
     public: function(req, res, next) {
@@ -42,11 +42,22 @@ module.exports = {
                             message: err.message
                         })
                     } else {
-                        
+                        var payload = {
+                            _id: user._id,
+                            passLastModified: user.passLastModified
+                        }
+
+                        var token = jwt.sign(payload,secret); // Make token
+
                         res.status(200).json({
                             success: true,
-                            message: "Your account was verified"
+                            message: "Your account has been verified",
+                            token: token
                         })
+                        //res.status(200).json({
+                        //    success: true,
+                        //    message: "Your account was verified"
+                        //})
                     }
                 })
             }

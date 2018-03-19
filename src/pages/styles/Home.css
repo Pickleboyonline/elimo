@@ -132,8 +132,17 @@ form {
 }
 
 
+
+.contact-us {
+  justify-content: unset;
+}
 /* Larger than tablet */
 @media (min-width: 768px) {
+  .contact-us {
+    margin-left: 50px;
+    margin-right: 50px;
+    
+  }
   .jumbotron {
     background-position: left;
   }
@@ -195,6 +204,11 @@ form {
     background-position-y: 100px;
     
 }
+.contact-us {
+  margin-left: 100px;
+  margin-right: 100px;
+ 
+}
 .fleet {
   height: 700px;
 }
@@ -206,6 +220,16 @@ form {
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {
+
+  .contact-us {
+    
+    flex-direction: row;
+  }
+
+  .contact-button {
+    font-size: 26px;
+  }
+
   .jumbotron {
     background-size: contain;
     background-repeat: no-repeat;

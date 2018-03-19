@@ -1,16 +1,18 @@
 
-.Login-App {
+.Verify-App {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 75px;
-
+    margin-left: 32px;
+    margin-right: 32px;
 }
 
-.Login-App h1 {
+.Verify-App h1 {
     font-size: 4.0rem;
 }
+
 
 
 

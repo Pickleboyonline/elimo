@@ -32,13 +32,26 @@ module.exports = function(req, res) {
                 })
             } else {
                 // TODO: Add email sending
-                let link = "http://localhost:80/api/user/verify/" + x.id;
+                let link = "http://192.168.1.74/verify/" + x.id;
                 var message = `<p>Hello, please verify your account at <a href="${link}">${link}</a></p>`;
-                Mailer.sendMail(doc.email, message, "Email verification");
-                res.status(202).json({
-                    success: true,
-                    message: "User was successfully created. However, please verify your account with your email in order to login."
+                Mailer.sendMail(doc.email, message, "Email verification", (err, url) => {
+                    if (err) {
+                        console.log(err)
+                        res.status(500).json({
+                            success: false,
+                            message: err.message
+                        })
+                    } else {
+                        res.status(202).json({
+                            success: true,
+                            message: "User was successfully created. However, please verify your account with your email in order to login. ",
+                            url: url
+
+                        });
+                    }
                 });
+
+                
             }
         })
     }
