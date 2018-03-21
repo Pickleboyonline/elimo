@@ -29,7 +29,7 @@ class Form extends Component {
 
       sendForm = () => {
           var self = this;
-        axios.post("http://192.168.1.74/api/contact", {
+        axios.post("http://localhost/api/contact", {
             name: this.state.name,
             email: this.state.email,
             message: this.state.message
@@ -107,7 +107,8 @@ value={this.state.message}
             justifyContent: 'flex-end'
         }}>
          <Modal 
-            open={false}
+            open={this.state.open}
+            buttonText="ok"
             heading={this.state.modalHeading}
             body={this.state.modalMessage}
             onClick={(e)=>{
@@ -145,7 +146,12 @@ class Login extends Component {
         <h1>Contact Us</h1>
         <Form />
         </div>
-        <Footer />
+        <Footer style={{
+            position: 'absolute',
+            width: '100%',
+            bottom: 0,
+            left: 0
+        }}/>
         </div>
         )
         

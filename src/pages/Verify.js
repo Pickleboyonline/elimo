@@ -4,6 +4,8 @@ import axios from 'axios';
 import {ButtonFleet} from './Home'
 import {Footer} from './../App';
 import './styles/Verify.css';
+var url = require('./../components/config').url;
+
 
 export default class Verify extends Component {
     state = {
@@ -12,7 +14,7 @@ export default class Verify extends Component {
     componentDidMount() {
         var id = this.props.match.params.id;
         var self = this;
-            axios.put("http://192.168.1.74/api/user/verify/" + id)
+            axios.put(url + "/api/user/verify/" + id)
             .then((result) => {
                 self.setState({
                     heading: "Success",

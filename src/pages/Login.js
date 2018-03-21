@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
  import axios from 'axios';
  import {ButtonFleet} from './Home'
 import {Footer} from './../App';
+var url = require('./../components/config').url;
 
  class Form extends Component {
     state ={
@@ -24,7 +25,7 @@ import {Footer} from './../App';
       }
 
       sendForm = () => {
-        axios.post("http://192.168.1.74/api/auth", {
+        axios.post(url + "/api/auth", {
             email: this.state.email,
             password: this.state.password,
             //message: this.state.message

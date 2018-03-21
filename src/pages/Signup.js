@@ -7,6 +7,8 @@ import {Footer} from './../App';
 import Modal from './../components/Modal'
 import isEmail from 'validator/lib/isEmail';
 
+var url = require('./../components/config').url;
+
  class Form extends Component {
     state ={
         password: "",
@@ -77,7 +79,7 @@ import isEmail from 'validator/lib/isEmail';
       sendForm = () => {
           var self = this;
 
-        axios.post("http://192.168.1.74/api/user", {
+        axios.post(url + "/api/user", {
             email: this.state.email,
             password: this.state.password,
             nameLast: this.state.nameLast,
