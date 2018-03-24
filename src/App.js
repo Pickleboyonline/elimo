@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Verify from './pages/Verify';
 import Contact from './pages/Contact';
+import CP from './pages/panel/ControlPanel';
 
 export class Footer extends Component {
   render() {
@@ -38,6 +39,7 @@ class App extends Component {
       <Route  path="/contact" component={Contact} />
       <Route  path="/login" component={Login} />
       <Route  path="/verify/:id" component={Verify} />
+      <Route  path="/cp" component={CP} />
     <Route path="/signup" component={Signup} />
     </div>
   </Router>

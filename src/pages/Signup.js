@@ -12,6 +12,7 @@ var url = require('./../components/config').url;
  class Form extends Component {
     state ={
         password: "",
+        passwordConfirm: "",
         email: "",
         nameFirst: "",
         nameLast: "",
@@ -64,6 +65,13 @@ var url = require('./../components/config').url;
             })
             sendForm = false;
         }
+        if (this.state.password !== this.state.passwordConfirm || this.state.passwordConfirm === "") {
+            this.setState({
+                errorPasswordConfirm: true
+            })
+            sendForm = false;
+        }
+
         
         if (sendForm === true) {
             this.sendForm();
@@ -119,6 +127,15 @@ var url = require('./../components/config').url;
         event.preventDefault();
       }
 
+      checkConfirmPassword = () => {
+        if (this.state.password !== this.state.passwordConfirm) {
+            this.setState({
+                errorPasswordConfirm: true
+            })
+            //sendForm = false;
+        }
+      }
+
     render() {
         const error = {
             nameFirst: (this.state.errorNameFirst) ? {
@@ -128,6 +145,9 @@ var url = require('./../components/config').url;
                 borderColor: 'red'
             } : {},
             password: (this.state.errorPassword) ? {
+                borderColor: 'red'
+            } : {},
+            passwordConfirm: (this.state.errorPasswordConfirm) ? {
                 borderColor: 'red'
             } : {},
             nameLast: (this.state.errorNameLast) ? {
@@ -171,7 +191,7 @@ var url = require('./../components/config').url;
 
           <input type="text" 
           required
-          placeholder="First Name"
+          placeholder="First Name *"
           style={error.nameFirst}
           className="contact-input-text"
           value={this.state.nameFirst} 
@@ -179,7 +199,7 @@ var url = require('./../components/config').url;
 
           <input type="text" 
           required
-          placeholder="Last Name"
+          placeholder="Last Name *"
           style={error.nameLast}
           className="contact-input-text"
           value={this.state.nameLast} 
@@ -187,7 +207,7 @@ var url = require('./../components/config').url;
           
           <input type="email" 
           required
-          placeholder="Email"
+          placeholder="Email *"
           className="contact-input-text"
           style={error.email}
           value={this.state.email} 
@@ -195,14 +215,29 @@ var url = require('./../components/config').url;
 
 <input type="password" 
           required
-          placeholder="Password"
+          placeholder="Password *"
           className="contact-input-text"
           style={error.password}
           value={this.state.password} 
           onChange={this.handleChange('password', 'errorPassword')} />
 
-
-
+<input type="password" 
+          required
+          placeholder="Confirm Password *"
+          className="contact-input-text"
+          onBlur={this.checkConfirmPassword}
+          style={error.passwordConfirm}
+          value={this.state.passwordConfirm} 
+          onChange={this.handleChange('passwordConfirm', 'errorPasswordConfirm')} />
+{
+    (this.state.errorPasswordConfirm) &&
+    <div>
+    <p style={{
+        color: 'red',
+        margin: 0
+    }}>*Must match with password</p>
+    </div>
+}
 
         <div style={{
             display: 'flex',
