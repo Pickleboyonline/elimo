@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
 import {
-    withRouter
+    withRouter,
+    Route
   } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Drawer from 'material-ui/Drawer';
@@ -16,6 +17,9 @@ import MenuIcon from 'material-ui-icons/Menu';
 import logo from './../../../img/logo-light.svg';
 import CarIcon from 'material-ui-icons/DirectionsCar';
 import SettingsIcon from 'material-ui-icons/Settings';
+import Settings from './Settings';
+import Reservations from './Reservations';
+
 
 const drawerWidth = 240;
 
@@ -174,7 +178,9 @@ changeHeading = (x) => {
         </Hidden>
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography wrap>{'Make a reservation here'}</Typography>
+          
+            <Route path={this.props.match.url + "/settings"} component={Settings} />
+            <Route path={this.props.match.url + "/reservations"} component={Reservations} />
         </main>
       </div>
     );
