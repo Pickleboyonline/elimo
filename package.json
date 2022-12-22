@@ -11,7 +11,7 @@
     "express-request-limit": "^1.0.2",
     "helmet": "^3.12.0",
     "is-mobile": "^0.2.2",
-    "jsonwebtoken": "^8.2.0",
+    "jsonwebtoken": "^9.0.0",
     "material-ui": "^1.0.0-beta.37",
     "material-ui-icons": "^1.0.0-beta.36",
     "mongoose": "^5.0.10",
